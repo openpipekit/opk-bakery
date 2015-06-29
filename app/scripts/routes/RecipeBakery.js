@@ -24,14 +24,19 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     		})
     		$('.main').html(packagesTable.el)
             packagesTable.$el.on('select', function() {
-                var selected = (packagesTable.$el.find('.selected'))[0]
-                OpkBakery.recipe.set('sensorId', $(selected).attr('data-id'))
+                var selected = (packagesTable.$el.find('.selected'))[0]  
+                var sensorId = $(selected).attr('data-id')
+                sensors.models.forEach(function(model) {
+                    if (model.id == sensorId) {
+                        OpkBakery.recipe.set('sensorPackage', model)
+                    }
+                })
                 Backbone.history.navigate('configure-sensor', {trigger:true})
             })
     		sensors.fetch()
     	},
         configureSensor: function() {
-          var sensor = new OpkBakery.Models.Package({nid: OpkBakery.recipe.get('sensorId')})
+          var sensor = new OpkBakery.Models.Package({nid: (OpkBakery.recipe.get('sensorPackage')).id})
           var form = new OpkBakery.Views.ConfigurePackage({model: sensor})
           $('.main').html(form.el)
           sensor.fetch()
@@ -42,21 +47,26 @@ OpkBakery.Routers = OpkBakery.Routers || {};
           })
         },
         whichDatabase: function() {
-            var database = new OpkBakery.Collections.Packages()
-            database.params.packageType = 'databases'
+            var databases = new OpkBakery.Collections.Packages()
+            databases.params.packageType = 'databases'
             var packagesTable = new OpkBakery.Views.PackagesTable({
-                collection: database
+                collection: databases
             })
             $('.main').html(packagesTable.el)
             packagesTable.$el.on('select', function() {
                 var selected = (packagesTable.$el.find('.selected'))[0]
-                OpkBakery.recipe.set('databaseId', $(selected).attr('data-id'))
+                var databaseId = $(selected).attr('data-id')
+                databases.models.forEach(function(model) {
+                    if (model.id == databaseId) {
+                        OpkBakery.recipe.set('databasePackage', model)
+                    }
+                })
                 Backbone.history.navigate('configure-database', {trigger:true})
             })
-            database.fetch()
+            databases.fetch()
         },
         configureDatabase: function() {
-          var database = new OpkBakery.Models.Package({nid: OpkBakery.recipe.get('databaseId')})
+          var database = new OpkBakery.Models.Package({nid: (OpkBakery.recipe.get('databasePackage')).id})
           var form = new OpkBakery.Views.ConfigurePackage({model: database})
           $('.main').html(form.el)
           database.fetch()

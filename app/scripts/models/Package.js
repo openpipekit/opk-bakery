@@ -36,6 +36,12 @@ OpkBakery.Models = OpkBakery.Models || {};
             })
 
             return response;
+        },
+
+        generateInstall: function() {
+            var script = 'wget ' + ' --output ' + this.get('field_package_name') + ' ' + this.get('field_package_download_url') +  ' \n'
+            script += 'unzip ' + this.get('field_package_name') + ' -d ' + this.get('field_package_name') + ' \n'
+            return script
         }
 
     });

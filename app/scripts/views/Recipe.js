@@ -29,12 +29,19 @@ OpkBakery.Views = OpkBakery.Views || {};
 
         generateScript: function() {
             var sensorCli = this.model.get('sensorCli')
+            var sensorPackage = this.model.get('sensorPackage')
             var databaseCli = this.model.get('databaseCli')
+            var databasePackage = this.model.get('databasePackage')
             var script = '#! /bin/bash \n'
-            script += 'watch -n60 "'
+            script += sensorPackage.generateInstall() + ' \n'
+            script += databasePackage.generateInstall() + ' \n'
+            script += 'touch autorun.sh \n'
+            script += 'echo "#! /bin/bash" >> autorun.sh \n'
+            script += 'echo "watch -n60 "'
             script += sensorCli.generateCommand() 
             script += ' | '
             script += databaseCli.generateCommand()
+            script += '" >> autorun.sh'
             return script
         }
 
