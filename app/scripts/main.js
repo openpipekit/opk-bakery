@@ -8,7 +8,12 @@ window.OpkBakery = {
     Routers: {},
     init: function () {
         'use strict';
-        OpkBakery.host = 'http://local.opkp.org'
+        if (window.location.host === 'localhost:9000') {
+            OpkBakery.host = 'http://local.opkp.org'
+        }
+        else {
+            OpkBakery.host = 'http://live-open-pipe-kit-packages.pantheon.io/'
+        }
         var recipeBakery = new OpkBakery.Routers.RecipeBakery()
         Backbone.history.start()
     }
