@@ -14,6 +14,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
             'configure-sensor': 'configureSensor',
             'which-database': 'whichDatabase',
             'configure-database': 'configureDatabase',
+            'how-often': 'howOften',
             'recipe': 'recipe',
     	},
     	whichSensor: function() {
@@ -74,8 +75,18 @@ OpkBakery.Routers = OpkBakery.Routers || {};
             console.log('ok')
             OpkBakery.recipe.set('databaseCli', this.cli)
             // @todo Route to how-often
-            Backbone.history.navigate('recipe', {trigger:true})
+            Backbone.history.navigate('how-often', {trigger:true})
           })
+        },
+        howOften: function() {
+            var watch = new OpkBakery.Models.Watch()
+            var form = new OpkBakery.Views.HowOften({model: watch})
+            $('.main').html(form.el)
+            form.on('submit', function() {
+                OpkBakery.recipe.set('interval', watch.get('interval'))
+                Backbone.history.navigate('recipe', {trigger:true})
+            })
+            form.render()
         },
         recipe: function() {
             var recipeView = new OpkBakery.Views.Recipe({model: OpkBakery.recipe})
