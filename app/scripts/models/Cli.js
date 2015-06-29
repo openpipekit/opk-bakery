@@ -20,7 +20,18 @@ OpkBakery.Models = OpkBakery.Models || {};
 
         parse: function(response, options)  {
             return response;
+        },
+
+        generateCommand: function() {
+            var cmd = './' + this.get('package') + '/' + this.get('command') + ' '
+            _.each(this.toJSON(), function(value, key) {
+                if(key !== 'package' && key !== 'command') {
+                    cmd += ' --' + key + ' ' + value 
+                }
+            }) 
+            return cmd
         }
+
     });
 
 })();

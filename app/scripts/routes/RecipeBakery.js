@@ -14,6 +14,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
             'configure-sensor': 'configureSensor',
             'which-database': 'whichDatabase',
             'configure-database': 'configureDatabase',
+            'recipe': 'recipe',
     	},
     	whichSensor: function() {
     		var sensors = new OpkBakery.Collections.Packages()
@@ -62,9 +63,15 @@ OpkBakery.Routers = OpkBakery.Routers || {};
           form.on('configured', function() {
             console.log('ok')
             OpkBakery.recipe.set('databaseCli', this.cli)
-            Backbone.history.navigate('how-often', {trigger:true})
+            // @todo Route to how-often
+            Backbone.history.navigate('recipe', {trigger:true})
           })
         },
+        recipe: function() {
+            var recipeView = new OpkBakery.Views.Recipe({model: OpkBakery.recipe})
+            $('.main').html(recipeView.el)
+            recipeView.render()
+        }
 
     });
 

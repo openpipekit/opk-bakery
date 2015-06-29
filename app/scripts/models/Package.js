@@ -36,7 +36,7 @@ OpkBakery.Models = OpkBakery.Models || {};
             })
 
             return response;
-        },
+        }
 
     });
 
