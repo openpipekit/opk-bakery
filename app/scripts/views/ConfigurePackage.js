@@ -26,8 +26,8 @@ OpkBakery.Views = OpkBakery.Views || {};
             var view = this
             var cli = this.model.commands[0]
             this.cli = cli
-            if (!cli.hasOwnProperty('schema')) {
-                Backbone.history.navigate('which-database', {trigger:true})
+            if (Object.keys(cli.schema).length == 0) {
+                view.trigger('configured')
             }
             else {
                 var form = new Backbone.Form({
