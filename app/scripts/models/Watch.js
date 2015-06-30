@@ -23,7 +23,10 @@ OpkBakery.Models = OpkBakery.Models || {};
         },
 
         schema: {
-            'interval': 'Text'
+            'interval': {
+                'type': 'Text',
+                'title': '(in seconds)',
+            } 
         }
     });
 

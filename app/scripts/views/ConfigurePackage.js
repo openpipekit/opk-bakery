@@ -34,9 +34,10 @@ OpkBakery.Views = OpkBakery.Views || {};
                     model: cli,
                     submitButton: 'submit'
                 }).render();
+                form.$el.append('<button class="btn btn-default">submit</button>')
                 this.$el.html(form.el);
-                this.$el.append('<button class="btn">submit</button>')
-                $(this.$el.find('button')[0]).on('click', function() {
+                $(this.$el.find('button')[0]).on('click', function(e) {
+                    e.preventDefault()
                     console.log('submitted')
                     form.commit()
                     view.trigger('configured')
