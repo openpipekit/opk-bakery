@@ -18,12 +18,13 @@ OpkBakery.Routers = OpkBakery.Routers || {};
             'recipe': 'recipe',
     	},
     	whichSensor: function() {
+            $('.main').html('<h1>Which sensor?</h1>')
     		var sensors = new OpkBakery.Collections.Packages()
             sensors.params.packageType = 'sensors'
     		var packagesTable = new OpkBakery.Views.PackagesTable({
     			collection: sensors
     		})
-    		$('.main').html(packagesTable.el)
+    		$('.main').append(packagesTable.el)
             packagesTable.$el.on('select', function() {
                 var selected = (packagesTable.$el.find('.selected'))[0]  
                 var sensorId = $(selected).attr('data-id')
@@ -37,9 +38,10 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     		sensors.fetch()
     	},
         configureSensor: function() {
+          $('.main').html('<h1>Configure your sensor</h1>')
           var sensor = new OpkBakery.Models.Package({nid: (OpkBakery.recipe.get('sensorPackage')).id})
           var form = new OpkBakery.Views.ConfigurePackage({model: sensor})
-          $('.main').html(form.el)
+          $('.main').append(form.el)
           sensor.fetch()
           form.on('configured', function() {
             console.log('ok')
@@ -48,12 +50,13 @@ OpkBakery.Routers = OpkBakery.Routers || {};
           })
         },
         whichDatabase: function() {
+            $('.main').html('<h1>Which database?</h1>')
             var databases = new OpkBakery.Collections.Packages()
             databases.params.packageType = 'databases'
             var packagesTable = new OpkBakery.Views.PackagesTable({
                 collection: databases
             })
-            $('.main').html(packagesTable.el)
+            $('.main').append(packagesTable.el)
             packagesTable.$el.on('select', function() {
                 var selected = (packagesTable.$el.find('.selected'))[0]
                 var databaseId = $(selected).attr('data-id')
@@ -67,9 +70,10 @@ OpkBakery.Routers = OpkBakery.Routers || {};
             databases.fetch()
         },
         configureDatabase: function() {
+          $('.main').html('<h1>Configure your database</h1>')
           var database = new OpkBakery.Models.Package({nid: (OpkBakery.recipe.get('databasePackage')).id})
           var form = new OpkBakery.Views.ConfigurePackage({model: database})
-          $('.main').html(form.el)
+          $('.main').append(form.el)
           database.fetch()
           form.on('configured', function() {
             console.log('ok')
@@ -79,9 +83,10 @@ OpkBakery.Routers = OpkBakery.Routers || {};
           })
         },
         howOften: function() {
+            $('.main').html('<h1>How often?</h1>')
             var watch = new OpkBakery.Models.Watch()
             var form = new OpkBakery.Views.HowOften({model: watch})
-            $('.main').html(form.el)
+            $('.main').append(form.el)
             form.on('submit', function() {
                 OpkBakery.recipe.set('interval', watch.get('interval'))
                 Backbone.history.navigate('recipe', {trigger:true})
