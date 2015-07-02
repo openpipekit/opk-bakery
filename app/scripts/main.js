@@ -12,7 +12,7 @@ window.OpkBakery = {
             OpkBakery.host = 'http://local.opkp.org'
         }
         else {
-            OpkBakery.host = 'http://dev-open-pipe-kit-packages.pantheon.io/'
+            OpkBakery.host = 'http://live-open-pipe-kit-packages.pantheon.io/'
         }
         var recipeBakery = new OpkBakery.Routers.RecipeBakery()
         Backbone.history.start()
