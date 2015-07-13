@@ -37,11 +37,11 @@ OpkBakery.Views = OpkBakery.Views || {};
             script += databasePackage.generateInstall() + ' \n'
             script += 'touch autorun.sh \n'
             script += 'echo "#! /bin/bash" >> autorun.sh \n'
-            script += 'echo "watch -n' + this.model.get('interval') + ' "'
+            script += 'echo \'watch -n' + this.model.get('interval') + ' "'
             script += sensorCli.generateCommand() 
             script += ' | '
             script += databaseCli.generateCommand()
-            script += '" >> autorun.sh'
+            script += '" >> autorun.sh\''
             return script
         }
 
