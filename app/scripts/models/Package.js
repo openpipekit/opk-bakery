@@ -39,8 +39,9 @@ OpkBakery.Models = OpkBakery.Models || {};
         },
 
         generateInstall: function() {
-            var script = 'wget ' + ' --output ' + this.get('field_package_name') + ' ' + this.get('field_package_download_url') +  ' \n'
-            script += 'unzip ' + this.get('field_package_name') + ' -d ' + this.get('field_package_name') + ' \n'
+            var script = 'wget ' + ' -O ' + this.get('field_package_name') + '.tar.gz ' + this.get('field_package_download_url') +  '\n'
+            script += 'mkdir ' + this.get('field_package_name') + '\n'
+            script += 'tar xzf ' + this.get('field_package_name') + '.tar.gz --strip-components=1 -C ' + this.get('field_package_name') + '\n'
             return script
         }
 
