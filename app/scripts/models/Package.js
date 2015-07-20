@@ -42,6 +42,9 @@ OpkBakery.Models = OpkBakery.Models || {};
             var script = 'wget ' + ' -O ' + this.get('field_package_name') + '.tar.gz ' + this.get('field_package_download_url') +  '\n'
             script += 'mkdir ' + this.get('field_package_name') + '\n'
             script += 'tar xzf ' + this.get('field_package_name') + '.tar.gz --strip-components=1 -C ' + this.get('field_package_name') + '\n'
+            script += 'if [ -f ./' + this.get('field_package_name') + '/install ]; then ' 
+            script += './' + this.get('field_package_name') + '/install;'
+            script += 'fi' + '\n'
             return script
         }
 
