@@ -18,8 +18,8 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'which-database': 'whichDatabase',
       'configure-database': 'configureDatabase',
       'how-often': 'howOften',
-      '
-      'recipe': 'recipe',
+      'configure-wifi': 'configureWifi',
+      'recipe': 'recipe'
     },
 
     intro: function() {
@@ -105,10 +105,24 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       $('.main').append(form.el)
       form.on('submit', function() {
         OpkBakery.recipe.set('interval', watch.get('interval'))
-        Backbone.history.navigate('recipe', {trigger:true})
+        Backbone.history.navigate('configure-wifi', {trigger:true})
       })
       form.render()
     },
+
+    configureWifi: function() {
+      $('.main').html('<h1>Configure WiFi</h1>')
+      var wifiOptions = new OpkBakery.Models.WifiOptions()
+      var configureWifiForm = new OpkBakery.Views.ConfigureWifi({model: wifiOptions})
+      $('.main').append(configureWifiForm.el)
+      configureWifiForm.on('configured', function() {
+        OpkBakery.recipe.set('wifiName', this.model.get('wifiName'))
+        OpkBakery.recipe.set('wifiPassword', this.model.get('wifiPassword'))
+        Backbone.history.navigate('recipe', {trigger:true})
+      })
+      configureWifiForm.render()
+    },
+
 
     recipe: function() {
       var recipeView = new OpkBakery.Views.Recipe({model: OpkBakery.recipe})
