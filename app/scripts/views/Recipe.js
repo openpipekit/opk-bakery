@@ -25,6 +25,7 @@ OpkBakery.Views = OpkBakery.Views || {};
             var vars = this.model.toJSON()
             vars.script = this.generateScript()
             this.$el.html(this.template(vars));
+            this.$el.append(this.generateDownload())
         },
 
         generateScript: function() {
@@ -44,6 +45,16 @@ OpkBakery.Views = OpkBakery.Views || {};
             script += databaseCli.generateCommand()
             script += '"\' >> autorun.sh'
             return script
+        },
+
+        generateDownload: function() {
+          var filename = 'autorunonce.sh'
+          var code = $(this.$el.find('textarea')[0]).text()
+          var b = document.createElement('a');
+          b.download = filename;
+          b.textContent = 'download';
+          b.href = 'data:application/json;base64,'+ window.btoa(unescape(encodeURIComponent(code)))
+          return b
         }
 
     });
