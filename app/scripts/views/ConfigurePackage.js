@@ -18,10 +18,12 @@ OpkBakery.Views = OpkBakery.Views || {};
         events: {},
 
         initialize: function () {
+            this.$el.spin(OpkBakery.spinOpts)
             this.listenTo(this.model, 'sync', this.render);
         },
 
         render: function () {
+            this.$el.spin(false)
             // @todo We might want there to be more than one command
             var view = this
             var cli = this.model.commands[0]
