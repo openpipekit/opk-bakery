@@ -25,7 +25,10 @@ OpkBakery.Views = OpkBakery.Views || {};
             var vars = this.model.toJSON()
             vars.script = this.generateScript()
             this.$el.html(this.template(vars));
+            this.$el.append('<p>')
             this.$el.append(this.generateDownload())
+            this.$el.append('</p>')
+
         },
 
         generateScript: function() {
@@ -40,7 +43,7 @@ OpkBakery.Views = OpkBakery.Views || {};
             script += 'touch autorun.sh \n'
             script += 'echo "#!/bin/bash" >> autorun.sh \n'
             script += 'echo \'watch -n' + this.model.get('interval') + ' "'
-            script += sensorCli.generateCommand() 
+            script += sensorCli.generateCommand()
             script += ' | '
             script += databaseCli.generateCommand()
             script += '"\' >> autorun.sh'
@@ -50,9 +53,10 @@ OpkBakery.Views = OpkBakery.Views || {};
         generateDownload: function() {
           var filename = 'autorunonce.sh'
           var code = $(this.$el.find('textarea')[0]).text()
-          var b = document.createElement('a');
-          b.download = filename;
-          b.textContent = 'download';
+          var b = document.createElement('a')
+          b.className = 'btn btn-success'
+          b.download = filename
+          b.textContent = 'download'
           b.href = 'data:application/json;base64,'+ window.btoa(unescape(encodeURIComponent(code)))
           return b
         }
