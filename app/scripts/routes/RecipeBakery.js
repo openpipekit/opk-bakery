@@ -12,7 +12,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     },
 
     routes: {
-      '': 'intro',
+      '': 'home',
       'which-sensor': 'whichSensor',
       'configure-sensor': 'configureSensor',
       'which-database': 'whichDatabase',
@@ -22,13 +22,20 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'recipe': 'recipe'
     },
 
+    home: function() {
+      $('.main').html()
+      var homeView = new OpkBakery.Views.Home()
+      homeView.render()
+      $('.main').append(homeView.el)
+    },
+
     intro: function() {
       $('.main').html()
       var introView = new OpkBakery.Views.Intro()
       $('.main').append(introView.el)
       introView.render()
     },
-    
+
     whichSensor: function() {
       $('.main').html('<h1>Which sensor?</h1>')
       var sensors = new OpkBakery.Collections.Packages()
@@ -38,7 +45,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       })
       $('.main').append(packagesTable.el)
         packagesTable.$el.on('select', function() {
-          var selected = (packagesTable.$el.find('.selected'))[0]  
+          var selected = (packagesTable.$el.find('.selected'))[0]
           var sensorId = $(selected).attr('data-id')
           sensors.models.forEach(function(model) {
             if (model.id == sensorId) {
@@ -49,7 +56,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
         })
       sensors.fetch()
     },
-    
+
     configureSensor: function() {
       $('.main').html('<h1>Configure your sensor</h1>')
       var sensor = new OpkBakery.Models.Package({nid: (OpkBakery.recipe.get('sensorPackage')).id})
