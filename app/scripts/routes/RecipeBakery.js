@@ -14,6 +14,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     routes: {
       '': 'home',
       'which-sensor': 'whichSensor',
+      'configure': 'whichSensor',
       'configure-sensor': 'configureSensor',
       'which-database': 'whichDatabase',
       'configure-database': 'configureDatabase',
@@ -23,10 +24,34 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     },
 
     home: function() {
-      $('.main').html()
-      var homeView = new OpkBakery.Views.Home()
-      homeView.render()
-      $('.main').append(homeView.el)
+      $('.main').fadeOut()
+      setTimeout(function() {
+
+        $('body').addClass('plug-it-in')
+        $('.main').html('')
+
+        var homeView = new OpkBakery.Views.Home()
+        $('.main').append(homeView.el)
+        homeView.render()
+
+        $('.main').fadeIn()
+
+        var sensors = new OpkBakery.Collections.Packages()
+        sensors.params.packageType = 'sensors'
+        var packagesTable = new OpkBakery.Views.SensorsSimple({
+          collection: sensors
+        })
+        $('.main').append(packagesTable.el)
+
+        packagesTable.$el.hide()
+        sensors.on('sync', function() {
+          packagesTable.$el.fadeIn()
+        })
+        sensors.fetch()
+
+
+
+      }, 500)
     },
 
     intro: function() {
@@ -37,6 +62,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     },
 
     whichSensor: function() {
+      $('body').removeClass('plug-it-in')
       $('.main').html('<h1>Which sensor?</h1>')
       var sensors = new OpkBakery.Collections.Packages()
       sensors.params.packageType = 'sensors'
@@ -44,16 +70,16 @@ OpkBakery.Routers = OpkBakery.Routers || {};
         collection: sensors
       })
       $('.main').append(packagesTable.el)
-        packagesTable.$el.on('select', function() {
-          var selected = (packagesTable.$el.find('.selected'))[0]
-          var sensorId = $(selected).attr('data-id')
-          sensors.models.forEach(function(model) {
-            if (model.id == sensorId) {
-                OpkBakery.recipe.set('sensorPackage', model)
-            }
-          })
-          Backbone.history.navigate('configure-sensor', {trigger:true})
+      packagesTable.$el.on('select', function() {
+        var selected = (packagesTable.$el.find('.selected'))[0]
+        var sensorId = $(selected).attr('data-id')
+        sensors.models.forEach(function(model) {
+          if (model.id == sensorId) {
+              OpkBakery.recipe.set('sensorPackage', model)
+          }
         })
+        Backbone.history.navigate('configure-sensor', {trigger:true})
+      })
       sensors.fetch()
     },
 

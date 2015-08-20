@@ -1,7 +1,11 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 @import 'bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
+@import url('http://fonts.googleapis.com/css?family=Lato');
 
+* {
+  font-family: Lato;
+}
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -38,6 +42,13 @@ body {
 
 .main {
   margin-top: 30px;
+}
+
+.plug-it-in {
+  background: url('/images/plug-it-in-small.png');
+  background-position: right top 170px;
+  background-repeat: no-repeat;
+  min-height: 900px;
 }
 
 /* Custom page footer */
