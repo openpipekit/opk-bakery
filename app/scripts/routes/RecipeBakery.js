@@ -38,15 +38,11 @@ OpkBakery.Routers = OpkBakery.Routers || {};
 
         var sensors = new OpkBakery.Collections.Packages()
         sensors.params.packageType = 'sensors'
-        var packagesTable = new OpkBakery.Views.SensorsSimple({
+        var sensorPackagesTable = new OpkBakery.Views.PackageTableSimple({
           collection: sensors
         })
-        $('.main').append(packagesTable.el)
-
-        packagesTable.$el.hide()
-        sensors.on('sync', function() {
-          packagesTable.$el.fadeIn()
-        })
+        $('.main').append('<h2 style="font-weight: lighter; text-align: center; color: #666; padding: 420px 0 10px 0;">Connect your pipe to any of these sensors.</h2>')
+        $('.main').append(sensorPackagesTable.el)
         sensors.fetch()
 
 

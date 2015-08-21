@@ -26,12 +26,17 @@ OpkBakery.Views = OpkBakery.Views || {};
         },
 
         render: function () {
-            this.$el.spin(false)
-            this.collection.models.forEach(function(model) {
-                var itemView = new OpkBakery.Views[this.itemView]({ model: model})
-                this.$el.append(itemView.el)
-                itemView.render()
-            }, this)
+            this.$el.fadeOut()
+            var view = this
+            setTimeout(function() {
+              view.$el.spin(false)
+              view.collection.models.forEach(function(model) {
+                  var itemView = new OpkBakery.Views[this.itemView]({ model: model})
+                  this.$el.append(itemView.el)
+                  itemView.render()
+              }, view)
+              view.$el.fadeIn()
+            }, 500)
         }
 
     });
