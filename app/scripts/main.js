@@ -9,7 +9,8 @@ window.OpkBakery = {
     init: function () {
         'use strict';
         if (window.location.host === 'localhost:9000') {
-            OpkBakery.host = 'http://local.opkp.org'
+            //OpkBakery.host = 'http://local.opkp.org'
+            OpkBakery.host = 'http://live-open-pipe-kit-packages.pantheon.io/'
         }
         else {
             OpkBakery.host = 'http://live-open-pipe-kit-packages.pantheon.io/'
