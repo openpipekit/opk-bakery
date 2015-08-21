@@ -20,7 +20,9 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'configure-database': 'configureDatabase',
       'how-often': 'howOften',
       'configure-wifi': 'configureWifi',
-      'recipe': 'recipe'
+      'recipe': 'recipe',
+      'get-the-kit': 'getTheKit',
+      'plug-it-in': 'plugItIn'
     },
 
     home: function() {
@@ -42,7 +44,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
         var sensorPackagesTable = new OpkBakery.Views.PackageTableSimple({
           collection: sensors
         })
-        $('.main').append('<h2 style="font-weight: lighter; text-align: center; color: #666; padding: 420px 0 30px 0;">Connect your pipe to any of these sensors.</h2>')
+        $('.main').append('<h2 style="font-weight: lighter; text-align: center; padding: 420px 0 30px 0;">Connect your pipe to any of these sensors.</h2>')
         $('.main').append(sensorPackagesTable.el)
         sensors.fetch()
 
@@ -52,12 +54,37 @@ OpkBakery.Routers = OpkBakery.Routers || {};
         var databasesPackagesTable = new OpkBakery.Views.PackageTableSimple({
           collection: databases
         })
-        $('.main').append('<h2 style="font-weight: lighter; text-align: center; color: #666; padding: 30px 0 30px 0;">Send your data to any of these places.</h2>')
+        $('.main').append('<h2 style="font-weight: lighter; text-align: center; padding: 30px 0 30px 0;">Send your data to any of these places.</h2>')
         $('.main').append(databasesPackagesTable.el)
         databases.fetch()
 
+        $('.main').append('<h2>Are you a developer interested in Open Pipe Kit?')
+        $('.main').append('Check out our <a href="http://openpipekit.github.io/wiki/">wiki</a> and chime in on our <a href="https://groups.google.com/forum/#!forum/open-pipe-kit">listserv</a>.')
 
+      }, 500)
+    },
 
+    getTheKit: function() {
+      $('body').removeClass('plug-it-in')
+      $('.main').fadeOut()
+      setTimeout(function() {
+        $('.main').html('')
+        var getTheKit = new OpkBakery.Views.GetTheKit()
+        $('.main').append(getTheKit.el)
+        getTheKit.render()
+        $('.main').fadeIn()
+      }, 500)
+    },
+
+    plugItIn: function() {
+      $('body').removeClass('plug-it-in')
+      $('.main').fadeOut()
+      setTimeout(function() {
+        $('.main').html('')
+        var plugItIn = new OpkBakery.Views.PlugItIn()
+        $('.main').append(plugItIn.el)
+        plugItIn.render()
+        $('.main').fadeIn()
       }, 500)
     },
 
