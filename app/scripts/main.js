@@ -15,6 +15,7 @@ window.OpkBakery = {
         else {
             OpkBakery.host = 'http://live-open-pipe-kit-packages.pantheon.io/'
         }
+        this.darkify()
         var recipeBakery = new OpkBakery.Routers.RecipeBakery()
         Backbone.history.start()
     },
@@ -39,7 +40,24 @@ window.OpkBakery = {
         , shadow: false // Whether to render a shadow
         , hwaccel: false // Whether to use hardware acceleration
         , position: 'absolute' // Element positioning
+      },
+      darkify: function() {
+        var dark = false
+        window.addEventListener("devicelight", function(e){
+          if (e.value < 40 && dark === false) {
+            dark = true
+            $('body').addClass('dark')
+            $('head').append('<link id="dark-theme" rel="stylesheet" href="styles/bootstrap-cyborg.min.css">')
+          }
+          else if (e.value > 40 && dark === true) {
+            dark = false
+            $('body').removeClass('dark')
+            $('#dark-theme').remove()
+          }
+          console.log(e.value)
+        })
       }
+
 };
 
 $(document).ready(function () {

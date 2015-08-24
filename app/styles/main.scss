@@ -53,7 +53,7 @@ body {
 }
 
 .plug-it-in {
-  background: url('/images/plug-it-in-small.png');
+  background-image: url('/images/plug-it-in-small.png');
   background-position: right top 100px;
   background-repeat: no-repeat;
   min-height: 900px;
@@ -68,7 +68,7 @@ body {
 }
 
 nav {
-  background: white !important;
+  /*background: white !important;*/
   text-align: center;
   padding-top: 15px !important;
   font-size: 1.2em;
@@ -106,6 +106,21 @@ a:hover {
 .marketing p + h4 {
     margin-top: 28px;
 }
+
+
+body.dark .home-header {
+  color: #888 !important;
+  font-size: 2.3em;
+}
+
+body.dark h1.home-header {
+  margin-top: 70px;
+}
+
+body.dark h2.home-header {
+  margin-bottom: 40px;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
