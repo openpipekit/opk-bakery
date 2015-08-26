@@ -26,9 +26,16 @@ OpkBakery.Models = OpkBakery.Models || {};
             var cmd = './' + this.get('package') + '/' + this.get('command') + ' '
             _.each(this.toJSON(), function(value, key) {
                 if(key !== 'package' && key !== 'command') {
-                    cmd += ' --' + key + ' ' + value 
+                  if (typeof value == 'boolean') {
+                    if  (value == true) {
+                      cmd += ' --' + key
+                    }
+                  }
+                  else {
+                    cmd += ' --' + key + ' ' + value
+                  }
                 }
-            }) 
+            })
             return cmd
         }
 
