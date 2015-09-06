@@ -59,7 +59,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
         databases.fetch()
 
         $('.main').append('<h2>Are you a developer interested in Open Pipe Kit?')
-        $('.main').append('Check out our <a href="http://openpipekit.github.io/wiki/">wiki</a> and chime in on our <a href="https://groups.google.com/forum/#!forum/open-pipe-kit">listserv</a>.')
+        $('.main').append('Check out our <a href="http://opk.hackpad.com">Hackpad Wiki</a> and chime in on our <a href="https://groups.google.com/forum/#!forum/open-pipe-kit">listserv</a>.')
 
       }, 500)
     },
