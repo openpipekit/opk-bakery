@@ -31,7 +31,7 @@ OpkBakery.Models = OpkBakery.Models || {};
                 var cli = new OpkBakery.Models.Cli()
                 cli.set('package', response.field_package_name)
                 cli.set('command', commandObject.command)
-                cli.schema = commandObject.options 
+                cli.schema = commandObject.options
                 pkg.commands.push(cli)
             })
 
@@ -42,9 +42,11 @@ OpkBakery.Models = OpkBakery.Models || {};
             var script = 'wget ' + ' -O ' + this.get('field_package_name') + '.tar.gz ' + this.get('field_package_download_url') +  '\n'
             script += 'mkdir ' + this.get('field_package_name') + '\n'
             script += 'tar xzf ' + this.get('field_package_name') + '.tar.gz --strip-components=1 -C ' + this.get('field_package_name') + '\n'
-            script += 'if [ -f ./' + this.get('field_package_name') + '/install ]; then ' 
-            script += './' + this.get('field_package_name') + '/install;'
+            script += 'cd ' + this.get('field_package_name') + ' \n'
+            script += 'if [ -f ./install ]; then '
+            script += './install;'
             script += 'fi' + '\n'
+            script += 'cd .. \n'
             return script
         }
 
