@@ -46,7 +46,7 @@ OpkBakery.Views = OpkBakery.Views || {};
             script += 'echo \'if [ -f ./' + sensorPackage.get('field_package_name') + '/onboot.sh ]; then ./' + sensorPackage.get('field_package_name') + '/onboot.sh;fi\' >> autorun.sh \n'
             script += 'echo \'watch -n' + this.model.get('interval') + ' "'
             script += sensorCli.generateCommand()
-            script += ' | '
+            script += ' | tee -a log.txt | '
             script += databaseCli.generateCommand()
             script += ' | tee -a log.txt"\' >> autorun.sh'
             return script
