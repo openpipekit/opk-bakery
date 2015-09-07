@@ -48,7 +48,7 @@ OpkBakery.Views = OpkBakery.Views || {};
             script += sensorCli.generateCommand()
             script += ' | '
             script += databaseCli.generateCommand()
-            script += '"\' >> autorun.sh'
+            script += ' | tee -a log.txt"\' >> autorun.sh'
             return script
         },
 
