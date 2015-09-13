@@ -37,7 +37,12 @@ OpkBakery.Views = OpkBakery.Views || {};
             var databaseCli = this.model.get('databaseCli')
             var databasePackage = this.model.get('databasePackage')
             var script = '#!/bin/bash \n'
-            script += 'pirateship wifi ' + this.model.get('wifiName') + ' ' + this.model.get('wifiPassword') + ' \n'
+            if (this.model.get('networkAdapter') == 'wifi') {
+              script += 'pirateship wifi ' + this.model.get('wifiName') + ' ' + this.model.get('wifiPassword') + ' \n'
+            }
+            else if (this.model.get('networkAdapter') == 'ethernet') {
+              script += 'pirateship defaults \n'
+            }
             script += sensorPackage.generateInstall() + ' \n'
             script += databasePackage.generateInstall() + ' \n'
             script += 'touch autorun.sh \n'

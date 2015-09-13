@@ -19,6 +19,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'which-database': 'whichDatabase',
       'configure-database': 'configureDatabase',
       'how-often': 'howOften',
+      'choose-network-adapter': 'chooseNetworkAdapter',
       'configure-wifi': 'configureWifi',
       'recipe': 'recipe',
       'get-the-kit': 'getTheKit',
@@ -172,9 +173,23 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       $('.main').append(form.el)
       form.on('submit', function() {
         OpkBakery.recipe.set('interval', watch.get('interval'))
-        Backbone.history.navigate('configure-wifi', {trigger:true})
+        Backbone.history.navigate('choose-network-adapter', {trigger:true})
       })
       form.render()
+    },
+
+    chooseNetworkAdapter: function() {
+      $('.main').html('<h1>Connect to a network?</h2>')
+      var view = new OpkBakery.Views.ChooseNetworkAdapter()
+      view.render()
+      var elements = view.$el.find('a')
+      var i
+      for(i = 0; i < elements.length; i++){
+        $(elements[i]).on('click', function(ev) {
+          OpkBakery.recipe.set('networkAdapter', this.getAttribute('data-choice'))
+        })
+      }
+      $('.main').append(view.el)
     },
 
     configureWifi: function() {
