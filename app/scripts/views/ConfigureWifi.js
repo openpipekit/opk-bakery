@@ -27,7 +27,7 @@ OpkBakery.Views = OpkBakery.Views || {};
         model: this.model,
         submitButton: 'submit'
       }).render();
-      form.$el.append('<button class="btn btn-default">submit</button>')
+      form.$el.append('<button style="float: right" class="btn btn-default">next</button>')
       this.$el.html(form.el);
       $(this.$el.find('button')[0]).on('click', function(e) {
         e.preventDefault()
@@ -35,7 +35,7 @@ OpkBakery.Views = OpkBakery.Views || {};
         form.commit()
         view.trigger('configured')
       })
- 
+
     }
 
   });

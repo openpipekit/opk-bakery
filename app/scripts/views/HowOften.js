@@ -21,13 +21,13 @@ OpkBakery.Views = OpkBakery.Views || {};
             this.listenTo(this.model, 'change', this.render);
         },
 
-        render: function () {                
+        render: function () {
             var view = this
             var form = new Backbone.Form({
                 model: this.model,
                 submitButton: 'submit'
             }).render();
-            form.$el.append('<button class="btn btn-default">submit</button>')
+            form.$el.append('<button style="float: right" class="btn btn-default">next</button>')
             this.$el.html(form.el);
             $(this.$el.find('button')[0]).on('click', function(e) {
                 e.preventDefault()
