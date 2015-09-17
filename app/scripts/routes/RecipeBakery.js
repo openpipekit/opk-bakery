@@ -21,6 +21,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'how-often': 'howOften',
       'choose-network-adapter': 'chooseNetworkAdapter',
       'configure-wifi': 'configureWifi',
+      'configure-ethernet-static': 'configureEthernetStatic',
       'recipe': 'recipe',
       'get-the-kit': 'getTheKit',
       'plug-it-in': 'plugItIn'
@@ -179,7 +180,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     },
 
     chooseNetworkAdapter: function() {
-      $('.main').html('<h1>Connect to a network?</h2>')
+      $('.main').html('<h1>How will you connect to the Internet?</h2>')
       var view = new OpkBakery.Views.ChooseNetworkAdapter()
       view.render()
       var elements = view.$el.find('a')
@@ -205,6 +206,20 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       configureWifiForm.render()
     },
 
+    configureEthernetStatic: function() {
+      $('.main').html('<h1>Configure your Ethernet with a Static IP Address</h1>')
+      var ethernetStaticOptions = new OpkBakery.Models.EthernetStaticOptions()
+      var configureEthernetStaticForm = new OpkBakery.Views.ConfigureEthernetStatic({model: ethernetStaticOptions})
+      $('.main').append(configureEthernetStaticForm.el)
+      configureEthernetStaticForm.on('configured', function() {
+        var config = this.model.toJSON()
+        delete config.id
+        OpkBakery.recipe.set(config)
+        Backbone.history.navigate('recipe', {trigger:true})
+      })
+      configureEthernetStaticForm.render()
+
+    },
 
     recipe: function() {
       var recipeView = new OpkBakery.Views.Recipe({model: OpkBakery.recipe})
