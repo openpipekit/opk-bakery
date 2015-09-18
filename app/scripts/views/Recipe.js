@@ -41,7 +41,13 @@ OpkBakery.Views = OpkBakery.Views || {};
               script += 'pirateship wifi ' + this.model.get('wifiName') + ' ' + this.model.get('wifiPassword') + ' \n'
             }
             else if (this.model.get('networkAdapter') == 'ethernet') {
-              script += 'pirateship defaults \n'
+              // Dogi suggest none as opposed to defaults
+              //script += 'pirateship defaults \n'
+            }
+            else if (this.model.get('networkAdapter') == 'ethernetStatic') {
+              script += 'pirateship ethernet ' + this.model.get('ipAddress')
+                + ' ' +  this.model.get('netmask') + ' ' + this.model.get('gateway')
+                + ' ' + this.model.get('dns') + '\n'
             }
             script += sensorPackage.generateInstall() + ' \n'
             script += databasePackage.generateInstall() + ' \n'
