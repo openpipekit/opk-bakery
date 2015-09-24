@@ -68,9 +68,10 @@ body {
 }
 
 nav {
-  /*background: white !important;*/
+  background: transparent !important;
+  border: none !important;
   text-align: center;
-  padding-top: 15px !important;
+  padding-top: 7px !important;
   font-size: 1.2em;
 }
 nav a {
