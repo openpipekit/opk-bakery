@@ -31,7 +31,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       $('.main').fadeOut()
       setTimeout(function() {
 
-        $('body').addClass('plug-it-in')
+        $('.wrapper').addClass('plug-it-in')
         $('.main').html('')
 
         var homeView = new OpkBakery.Views.Home()
@@ -98,7 +98,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     },
 
     whichSensor: function() {
-      $('body').removeClass('plug-it-in')
+      $('.wrapper').removeClass('plug-it-in')
       $('.main').html('<h1>Which sensor?</h1>')
       var sensors = new OpkBakery.Collections.Packages()
       sensors.params.packageType = 'sensors'
