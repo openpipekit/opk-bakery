@@ -10,9 +10,14 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="bower_components/backbone-forms/distribution/templates/bootstrap3.css">
         <link rel="stylesheet" href="bower_components/spin/stylesheets/jquery.spin.css">
+        <link href="bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">
+        <link href="bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css" rel="stylesheet">
+        <link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
         <!-- endbuild -->
     </head>
     <body class="">
@@ -26,21 +31,29 @@
   </style>
 
   <div class="wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="btn-group" role="group" aria-label="...">
-          <a href="#" class="btn btn-primary " role="button">Home</a>
-          <a href="#developers" class="btn btn-danger " role="button">Developers</a>
-          <a href="#examples" class="get-the-kit btn btn-success " role="button">Examples </a></li>
-        </div>
-        <div class="btn-group" role="group" aria-label="...">
-          <a href="#plan" class="get-the-kit btn btn-warning " role="button">Step 1: Plan</a></li>
-          <a href="#order" class="get-the-kit btn btn-warning " role="button">Step 2: Order</a></li>
-          <a href="#build" class="get-the-kit btn btn-warning " role="button">Step 3: Build</a></li>
-          <a href="#configure" class="configure btn btn-warning " alt="A Web App that will help you create a Pipe on a USB stick" role="button">Step 4: Configure</a>
-          <a href="#deploy" class="deploy btn btn-warning " alt="All our collective knowledge around OPK in a Wiki" role="button">Step 5: Deploy</a>
-        </div>
-        <div class="btn-group" role="group" aria-label="...">
-        </div>
+    <nav class="navbar navbar-success navbar-fixed-top navbar-collapse collapse navbar-responsive-collapse">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#developers" class="" >Developers</a></li>
+          <li><a href="#examples">Examples </a></li>
+        </ul>
+        <ul class="nav navbar-right">
+          <li>
+            <div class="btn-group">
+              <a href="javascript:void(0)" class="btn btn-warning">Guide</a>
+              <a href="bootstrap-elements.html" data-target="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#plan">Step 1: Plan</a></li>
+                <li><a href="#order">Step 2: Order</a></li>
+                <li><a href="#build">Step 3: Build</a></li>
+                <li><a href="#configure">Step 4: Configure</a></li>
+                <li><a href="#deploy">Step 5: Deploy</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <div class="container">
