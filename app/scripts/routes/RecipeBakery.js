@@ -14,7 +14,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
     routes: {
       '': 'home',
       'which-sensor': 'whichSensor',
-      'configure': 'whichSensor',
+      'configurator': 'whichSensor',
       'configure-sensor': 'configureSensor',
       'which-database': 'whichDatabase',
       'configure-database': 'configureDatabase',
@@ -24,7 +24,34 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'configure-ethernet-static': 'configureEthernetStatic',
       'recipe': 'recipe',
       'get-the-kit': 'getTheKit',
-      'plug-it-in': 'plugItIn'
+      'plug-it-in': 'plugItIn',
+      'guide': 'guide',
+      'examples': 'examples',
+      'developers': 'developers'
+    },
+
+    guide: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://opk.hackpad.com/Guide-Landing-Page-guide-nfTnXEGDf1J')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    developers: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://opk.hackpad.com/Open-Pipe-Kit-Developers-o8rJ0RYNQ0W')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    examples: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://opk.hackpad.com/Open-Pipe-Kit-Examples-pTLBqS61SXX')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
     },
 
     home: function() {
@@ -39,29 +66,6 @@ OpkBakery.Routers = OpkBakery.Routers || {};
         homeView.render()
 
         $('.main').fadeIn()
-
-        // Bring in the Sensors
-        var sensors = new OpkBakery.Collections.Packages()
-        sensors.params.packageType = 'sensors'
-        var sensorPackagesTable = new OpkBakery.Views.PackageTableSimple({
-          collection: sensors
-        })
-        $('.main').append('<h2 style="font-weight: lighter; text-align: center; padding: 420px 0 30px 0;">Connect your pipe to any of these sensors.</h2>')
-        $('.main').append(sensorPackagesTable.el)
-        sensors.fetch()
-
-        // Bring in the databases
-        var databases = new OpkBakery.Collections.Packages()
-        databases.params.packageType = 'databases'
-        var databasesPackagesTable = new OpkBakery.Views.PackageTableSimple({
-          collection: databases
-        })
-        $('.main').append('<h2 style="font-weight: lighter; text-align: center; padding: 30px 0 30px 0;">Send your data to any of these places.</h2>')
-        $('.main').append(databasesPackagesTable.el)
-        databases.fetch()
-
-        $('.main').append('<h2>Are you a developer interested in Open Pipe Kit?')
-        $('.main').append('Check out our <a href="http://opk.hackpad.com/Open-Pipe-Kit-Documentation.txt-IUttZt9F0jp">Hackpad Wiki</a> and chime in on our <a href="https://groups.google.com/forum/#!forum/open-pipe-kit">listserv</a>.')
 
       }, 500)
     },

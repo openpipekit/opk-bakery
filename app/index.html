@@ -12,47 +12,45 @@
         <link rel="stylesheet" href="bower_components/spin/stylesheets/jquery.spin.css">
         <link href="bower_components/bootstrap-material-design/dist/css/roboto.min.css" rel="stylesheet">
         <link href="bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.green-orange.min.css" />
         <link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
-        <script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
-        <script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
         <!-- endbuild -->
     </head>
-    <body class="">
+    <body>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
-  <style type="text/css">
-    body { padding-top: 50px; }
-  </style>
-
   <div class="wrapper">
-    <nav class="navbar navbar-success navbar-fixed-top navbar-collapse collapse navbar-responsive-collapse">
+
+    <nav class="navbar navbar-success navbar-fixed-top">
       <div class="container">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#developers" class="" >Developers</a></li>
-          <li><a href="#examples">Examples </a></li>
-        </ul>
-        <ul class="nav navbar-right">
-          <li>
-            <div class="btn-group">
-              <a href="javascript:void(0)" class="btn btn-warning">Guide</a>
-              <a href="bootstrap-elements.html" data-target="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#plan">Step 1: Plan</a></li>
-                <li><a href="#order">Step 2: Order</a></li>
-                <li><a href="#build">Step 3: Build</a></li>
-                <li><a href="#configure">Step 4: Configure</a></li>
-                <li><a href="#deploy">Step 5: Deploy</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">Open Pipe Kit</a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#guide">Guide</a></li>
+            <li><a href="#examples">Examples </a></li>
+            <li><a href="#developers">Developers</a></li>
+            <li><a href="#configurator">Configurator</a></li>
+          </ul>
+        </div>
+
       </div>
     </nav>
 
@@ -60,7 +58,9 @@
         <div class="main">
         </div>
     </div>
+
   </div>
+
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -97,6 +97,9 @@
         <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
         <script src="bower_components/spin.js/spin.js"></script>
         <script src="bower_components/spin.js/jquery.spin.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+        <script src="bower_components/material-design-lite/material.min.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.js -->

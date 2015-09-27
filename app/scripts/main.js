@@ -8,6 +8,7 @@ window.OpkBakery = {
     Routers: {},
     init: function () {
         'use strict';
+        $.material.init()
         if (window.location.host === 'localhost:9000') {
             //OpkBakery.host = 'http://local.opkp.org'
             OpkBakery.host = 'http://live-open-pipe-kit-packages.pantheon.io/'
@@ -18,6 +19,10 @@ window.OpkBakery = {
         this.darkify()
         var recipeBakery = new OpkBakery.Routers.RecipeBakery()
         Backbone.history.start()
+    },
+    setIframe: function(url) {
+      $('.main').html('<iframe src="' + url + '"></iframe>')
+      $('iframe').css('height', $(window).height())
     },
     spinOpts: {
           lines: 13 // The number of lines to draw
