@@ -22,7 +22,7 @@ window.OpkBakery = {
     },
     setIframe: function(url) {
       $('.main').html('<iframe src="' + url + '"></iframe>')
-      $('iframe').css('height', $(window).height())
+      $('iframe').css('height', $(window).height()-50)
     },
     spinOpts: {
           lines: 13 // The number of lines to draw

@@ -27,20 +27,93 @@ OpkBakery.Routers = OpkBakery.Routers || {};
       'plug-it-in': 'plugItIn',
       'guide': 'guide',
       'examples': 'examples',
-      'developers': 'developers'
+      'forum': 'forum',
+      'hackpad': 'hackpad',
+      'events': 'events',
+      'chat': 'chat',
+      'step1': 'step1',
+      'step2': 'step2',
+      'step3': 'step3',
+      'step4': 'step4',
+      'step5': 'step5'
     },
 
-    guide: function() {
+    step1: function() {
       $('.main').fadeOut()
-      OpkBakery.setIframe('https://opk.hackpad.com/Guide-Landing-Page-guide-nfTnXEGDf1J')
+      OpkBakery.setIframe('https://openpipekitguide.hackpad.com/Step-1-Plan-x5gNa51EeMa')
       setTimeout(function() {
         $('.main').fadeIn(1000)
       },500)
     },
 
-    developers: function() {
+    step2: function() {
       $('.main').fadeOut()
-      OpkBakery.setIframe('https://opk.hackpad.com/Open-Pipe-Kit-Developers-o8rJ0RYNQ0W')
+      OpkBakery.setIframe('https://openpipekitguide.hackpad.com/Step-2-Order-oA4Mn4uuHHE')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    step3: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://openpipekitguide.hackpad.com/Step-3-Build-ghs3tyFeJOZ')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    step4: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://openpipekitguide.hackpad.com/Step-4-Configure-ORawTnsyKK3')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    step5: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://openpipekitguide.hackpad.com/Step-5-Deploy-P9dAbqhovfN')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    guide: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://openpipekitguide.hackpad.com/The-Open-Pipe-Kit-Guide-7XLc3C3zTv9')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    hackpad: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://opk.hackpad.com/OPK-Developers-Pad-nfTnXEGDf1J')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    chat: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://gitter.im/openpipekit/openpipekit')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    events: function() {
+      $('.main').fadeOut()
+      OpkBakery.setIframe('https://opk.hackpad.com/Open-Pipe-Kit-Events-MCk6U9pHWgV')
+      setTimeout(function() {
+        $('.main').fadeIn(1000)
+      },500)
+    },
+
+    forum: function() {
+      $('.main').fadeOut()
+      $('.main').html('<iframe id="forum_embed" src="javascript:void(0)" scrolling="no" frameborder="0" width="900" height="700"></iframe><script type="text/javascript"> document.getElementById("forum_embed").src =  "https://groups.google.com/forum/embed/?place=forum/open-pipe-kit" +  "&showsearch=true&showpopout=true&parenturl=" +  encodeURIComponent(window.location.href);</script>')
+      $('iframe').css('height', $(window).height()-50)
       setTimeout(function() {
         $('.main').fadeIn(1000)
       },500)
@@ -48,7 +121,7 @@ OpkBakery.Routers = OpkBakery.Routers || {};
 
     examples: function() {
       $('.main').fadeOut()
-      OpkBakery.setIframe('https://opk.hackpad.com/Open-Pipe-Kit-Examples-pTLBqS61SXX')
+      OpkBakery.setIframe('https://opk.hackpad.com/Open-Pipe-Kit-Examples-OntAm0RwwtU')
       setTimeout(function() {
         $('.main').fadeIn(1000)
       },500)

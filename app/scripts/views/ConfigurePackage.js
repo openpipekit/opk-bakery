@@ -13,7 +13,7 @@ OpkBakery.Views = OpkBakery.Views || {};
 
         id: '',
 
-        className: '',
+        className: 'configurator-container',
 
         events: {},
 
@@ -36,7 +36,7 @@ OpkBakery.Views = OpkBakery.Views || {};
                     model: cli,
                     submitButton: 'submit'
                 }).render();
-                form.$el.append('<button style="float: right" class="btn btn-default">next</button>')
+                form.$el.append('<button style="float: right" class="btn btn-success">next</button>')
                 this.$el.html(form.el);
                 $(this.$el.find('button')[0]).on('click', function(e) {
                     e.preventDefault()

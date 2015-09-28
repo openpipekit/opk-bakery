@@ -16,6 +16,20 @@ iframe {
   height: 100%;
 }
 
+nav.navbar {
+  margin-bottom: 0px;
+  a {
+    color: #FFF !important;
+  }
+  li.dropdown li a {
+    color: #000 !important;
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
 .mdl-card {
   width: 100% !important;
 
@@ -39,17 +53,17 @@ iframe {
     padding: 0.2em 0;
 }
 
-.wrapper {
-  margin-top: 75px;
-  width: 100%;
-}
-
 .home-table {
-  margin: 0 auto;
+  margin: 25px auto 0px;
   width: 750px;
   .col {
     margin-bottom: 25px;
   }
+}
+
+.configurator-container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 750px) {
@@ -66,6 +80,10 @@ iframe {
   background-position: right top 100px;
   background-repeat: no-repeat;
   min-height: 900px;
+}
+
+.center-contents {
+  text-align: center;
 }
 
 body.dark .home-header {

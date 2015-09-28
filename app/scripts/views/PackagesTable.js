@@ -15,7 +15,7 @@ OpkBakery.Views = OpkBakery.Views || {};
 
         id: '',
 
-        className: 'table',
+        className: 'table configurator-container',
 
         events: {},
 
