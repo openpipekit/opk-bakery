@@ -26,7 +26,7 @@ OpkBakery.Views = OpkBakery.Views || {};
             vars.script = this.generateScript()
             this.$el.html(this.template(vars));
             this.$el.append('<p>')
-            this.$el.append(this.generateDownload())
+            this.$el.append(this.generateDownload(vars.script))
             this.$el.append('</p>')
 
         },
@@ -63,9 +63,8 @@ OpkBakery.Views = OpkBakery.Views || {};
             return script
         },
 
-        generateDownload: function() {
+        generateDownload: function(code) {
           var filename = 'autorunonce.sh'
-          var code = $(this.$el.find('textarea')[0]).text()
           var b = document.createElement('a')
           b.className = 'btn btn-success'
           b.download = filename
