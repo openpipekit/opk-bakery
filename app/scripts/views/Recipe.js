@@ -49,6 +49,7 @@ OpkBakery.Views = OpkBakery.Views || {};
                 + ' ' +  this.model.get('netmask') + ' ' + this.model.get('gateway')
                 + ' ' + this.model.get('dns') + '\n'
             }
+            script += 'while true; do ping -c1 www.google.com > /dev/null && break; done \n'
             script += sensorPackage.generateInstall() + ' \n'
             script += databasePackage.generateInstall() + ' \n'
             script += 'touch autorun.sh \n'
